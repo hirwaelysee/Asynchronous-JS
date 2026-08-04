@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../dist/style.css" rel="stylesheet">
+</head>
+<body class="bg-[#f1f0f0] h-screen">
+  <div class="flex justify-around items-center p-6 h-[20%] px-10">
+
+    <div class="inline-block">
+      <input type="color" id="color" name="color" class="inline-block">
+    </div>
+
+    <div class="inline-block ">
+      <select name="schemes" id="schemes" class="border-2 rounded border-gray-300 shadow-md py-2 pr-4">
+        <option value="monochrome">Monochrom</option>
+        <option value="monochrome-dark">Monochrome-dark</option>
+        <option value="monochrome-light">Monochrome-light</option>
+        <option value="analogic">Analogic</option>
+        <option value="complement">Complement</option>
+        <option value="analogic-complement">Analogic-Complement</option>
+        <option value="triad">Triad</option>
+        <option value="quad">Quad</option>
+      </select>
+    </div>
+
+    <button id="btn" class="inline-block border-2 rounded border-gray-300 shadow-md py-2 px-2">Get Color Scheme</button>
+    
+  </div>
+
+  <div id="outputColors" class=" flex flex-row gap-x-5 justify-around h-[80%] px-10 py-10">
+    <div class="inline-block  w-full h-full text-center">
+      <div class="color-box h-[93%] border-2 border-gray-300 shadow-md"></div>
+      <div class="color-code h-[7%] border-2 border-gray-300 shadow-md"></div>
+    </div>
+    <div class="inline-block  w-full h-full text-center">
+      <div class="color-box h-[93%] border-2 border-gray-300 shadow-md"></div>
+      <div class="color-code h-[7%] border-2 border-gray-300 shadow-md"></div>
+    </div>
+    <div class="inline-block w-full h-full text-center">
+      <div class="color-box h-[93%] border-2 border-gray-300 shadow-md"></div>
+      <div class="color-code h-[7%] border-2 border-gray-300 shadow-md"></div>
+    </div>
+    <div class="inline-block w-full h-full text-center">
+      <div class="color-box h-[93%] border-2 border-gray-300 shadow-md"></div>
+      <div class="color-code h-[7%] border-2 border-gray-300 shadow-md"></div>
+    </div>
+    <div class="inline-block w-full h-full text-center">
+      <div class="color-box h-[93%] border-2 border-gray-300 shadow-md"></div>
+      <div class="color-code h-[7%] border-2 border-gray-300 shadow-md"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
