@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/output.css">
+    <title>Document</title>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="relative bg-[url(../assets/headerimg.png)] bg-black opacity-100 text-[#ffffff] bg-cover bg-no-repeat h-64 flex flex-col justify-center items-center">
+        
+        <div class="font-inter w-[50%] flex justify-between items-center">
+            <h2 class="font-extrabold text-4xl"><a href="../index.html">My Watchlist</a></h2>
+            <p class="font-bold text-md"><a href="../index.html">Search for movies</a></p>
+        </div>
+
+        <!-- <div class="absolute bottom-[-20px] flex w-[50%] flex justify-between items-center bg-white rounded-md border-1 border-gray-400">
+            <div class="flex justify-center items-center  text-gray-700 w-[10%] h-full text-center p-2">
+                <img src="../assets/icons8-search.svg" alt="search-icon" class="w-6 ">   
+            </div>
+            <input type="text" placeholder="Search for a movie" class="w-[70%] border-none outline-none p-2 text-gray-700 font-semibold border-white h-full">
+            <button class="w-[20%] border-l-2 border-gray-300 bg-gray-50 rounded-r-md text-center p-2 text-gray-700 font-semibold cursor-pointer">Search</button>
+        </div> -->
+    
+    </header>
+    
+    <main id="mainsection" class="flex-1 flex flex-col justify-center items-center pt-10">
+        <div id="watch" class="flex flex-col justify-center items-center gap-y-2">
+            <div>
+                <p class="text-gray-300 text-lg font-semibold">Your watchlist is looking a little empty...</p>
+            </div>
+            <div class="flex justify-between items-center  gap-x-2">
+                <img src="../assets/Icon (1).png" alt="" class="h-4">
+                <p class="font-semibold text-base">Let's add some movies!</p>
+            </div>
+        </div>
+    </main>
+    <script src="../js/watchlist.js"></script>
+</body>
+</html>
