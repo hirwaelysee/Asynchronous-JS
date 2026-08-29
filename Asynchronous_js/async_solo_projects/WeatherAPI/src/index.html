@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/output.css">
+    <title>Weather APP</title>
+</head>
+<body class="flex justify-center items-center h-screen bg-blue-100">
+    <!-- The container -->
+    <div class="border-2 border-green-950 rounded-2xl flex flex-col gap-y-20 w-1/2 h-1/2 m-10 shadow-2xl">
+        <!-- The header -->
+        <div class="flex justify-center items-center flex-col mt-10">
+            <h2 class="pb-2 text-md font-semibold underline">Welcome to the Weather API</h2>
+            <button id="btn" class="text-md font-semibold p-1 border-2 border-green-900 rounded-lg cursor-pointer">Get Information</button>
+        </div>
+        <!-- The body -->
+        <div id="receiver" class="h-full rounded-2xl flex justify-around items-stretch">
+            
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
