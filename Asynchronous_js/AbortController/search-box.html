@@ -1,0 +1,113 @@
+<!-- Exercise 1 — Search Box with Cancelable Event Listener
+
+Build a search input that listens for user typing.
+
+Requirements
+
+Create:
+
+<input id="search" placeholder="Search...">
+<button id="stop-search">Stop Search</button>
+<button id="restart-search">Restart Search</button>
+
+<div id="results"></div>
+
+Use:
+
+    const controller = new AbortController();
+
+    and attach the listener:
+
+    search.addEventListener("input", handleSearch, {
+        signal: controller.signal
+    });
+    Behavior
+
+    When the user types:
+
+    javascript
+
+    display:
+
+    Searching for: javascript
+
+    When Stop Search is clicked:
+
+    controller.abort();
+
+    the input listener must stop working.
+
+    So after clicking Stop Search:
+
+    User types → NOTHING HAPPENS
+    Challenge
+
+    You are not allowed to remove the listener using:
+
+    removeEventListener()
+
+    You must use AbortController.
+
+    Then implement Restart Search.
+
+    The tricky part is:
+
+    Can you restart the listener after the controller has been aborted?
+
+    Hint: an aborted AbortController cannot be reused.
+
+    You'll need to think about how to create a new controller
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abort Controller with Event Listeners</title>
+</head>
+<body style="text-align: center;">
+    <div>
+        <h2>Abort Controller using event listeners</h2>
+        <input type="text" name="text" id="search" placeholder="Input your search">
+        <button id="stop">Stop Searching</button>
+        <button id="start">Start Searching</button>
+    </div>
+    <span>Searching for: <p style="display: inline-block;" id="display"></p></span>
+    
+    <script>
+        const input = document.getElementById("search");
+        const Stop = document.getElementById("stop");
+        const Start = document.getElementById("start");
+        const display = document.getElementById("display");
+
+        let controller;
+
+        function startSearching(){
+            controller = new AbortController();
+
+            input.addEventListener("input", ()=>{
+                display.textContent = input.value;
+            },
+            {
+                signal: controller.signal
+            })
+        }
+
+        Stop.addEventListener("click", ()=>{
+
+            controller.abort("Searching aborted");
+
+            display.textContent = '';
+        
+        })
+
+
+        Start.addEventListener("click", ()=>{
+            startSearching();
+        })
+
+        
+    </script>
+</body>
+</html>
