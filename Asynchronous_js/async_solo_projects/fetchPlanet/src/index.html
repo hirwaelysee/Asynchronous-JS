@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <title>Document</title>
+</head>
+<body class="h-screen flex flex-col justify-center items-center bg-amber-200">
+    <div class="flex flex-col items-center justify-center border-2 border-amber-950 w-1/2 p-10 rounded-2xl gap-y-4 bg-amber-900 shadow-2xl font-semibold">
+        <span class="underline cursor-pointer">Name: <h2 id="name" class="inline-block cursor-pointer"></h2></span>
+        <span class="underline">Diameter: <h4 id="diameter" class="inline-block"></h4></span>
+        <span class="underline">Star: <h4 id="star" class="inline-block"></h4></span>
+        <span class="underline">Distance: <h4 id="distance" class="inline-block"></h4></span>
+        <img id="image" src="" alt="" class="w-64 rounded-2xl inline-block">
+        <span class="underline">Number of moons: <h4 id="moons" class="inline-block"></h4></span>
+    </div>
+    <script>
+
+        const name = document.getElementById('name');
+        const diameter = document.getElementById("diameter");
+        const star = document.getElementById("star");
+        const distance = document.getElementById("distance");
+        const image = document.getElementById("image");
+        const moons = document.getElementById("moons");
+
+        let information = [];
+
+        const render = async() =>{
+            try {
+                const resp = await fetch("https://handlers.education.launchcode.org/static/planets.json");
+                if(!resp.ok){
+                    throw new Error("The api is not working");
+                }
+                const data = await resp.json();
+
+                name.textContent = data[0].name;
+                diameter.textContent = data[0].diameter;
+                star.textContent = data[0].star;
+                distance.textContent = data[0].distance;
+                moons.textContent = data[0].moons;
+                image.src = data[0].image;
+
+                name.addEventListener('click', ()=>{
+
+                    let random = Math.floor(Math.random() * data.length);
+
+                    name.textContent = data[random].name;
+
+                    diameter.textContent = data[random].diameter;
+
+                    star.textContent = data[random].star;
+
+                    distance.textContent = data[random].distance;
+                    
+                    moons.textContent = data[random].moons;
+
+                    image.src = data[random].image;
+            
+                })
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        render()
+
+    </script>
+</body>
+</html>
