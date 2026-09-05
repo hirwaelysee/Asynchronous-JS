@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <title>Document</title>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center">
+    <!-- container -->
+    <div id="container" class="flex flex-col gap-y-8 overflow-y-auto border-2 border-white w-2xl min-h-screen mt-2 mb-2 rounded-2xl inset-shadow-xs shadow-xl/30 pb-4">
+        <div class="flex items-center gap-x-4 px-10 pt-6 pb-4">
+            <h2 class="font-bold text-2xl">Astronauts</h2>
+            <button id="btn" class="border-2 border-black p-1 rounded-2xl text-violet-900 font-semibold bg-red-300 underline cursor-pointer">Click to get Astronauts</button>
+        </div>
+    </div>
+    <script>
+        let container = document.getElementById('container');
+        const render = () => {
+            const btn = document.getElementById("btn");
+            btn.addEventListener("click", async() => {
+                try {
+                    const resp = await fetch("https://handlers.education.launchcode.org/static/astronauts.json");                    
+
+                    if(!resp.ok){
+                        throw new Error("The api is not working");
+                    }
+
+                    const data = await resp.json();
+                    
+                    const information = data.sort((a,b)=> a.hoursInSpace - b.hoursInSpace);
+                    console.log(information)
+
+                    information.forEach((el) => {
+
+                         container.innerHTML +=  `
+                                                    <div id="astronaut" class="px-2 py-6 flex justify-between border-2 rounded-xl mx-8 ">
+                                                        <div class="bio">
+                                                            <h3 class="font-bold text-2xl pb-6">${el.firstName} ${el.lastName}</h3>
+                                                            <ul class="list-disc ml-10">
+                                                                <li>Hours in space: ${el.hoursInSpace}</li>
+                                                                <li>Active: ${el.active}</li>
+                                                                <li>Skills: ${el.skills.join(', ')}</li>
+                                                            </ul>
+                                                        </div>
+                                                        <img class="avatar w-36 h-32 rounded-full" src="${el.picture}">
+                                                    </div>
+                                                `;
+                    
+                    });  
+                    
+                } catch (error) {
+                    console.log(error);
+                }
+            })
+        }
+        render()
+
+    </script>
+</body>
+</html>
