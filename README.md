@@ -4,3 +4,4 @@ This repository contains exercises related with asynchronous Exercises.
 2. Async solo projects
 3. Callbacks 
 4. Promises
+5. XMLHttpRequest
