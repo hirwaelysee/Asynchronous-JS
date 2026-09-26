@@ -31,20 +31,26 @@ getFirstAvailableUser();
 You should choose the Promise static method that best fits this requirement.
 */
 
-async function getFirstAvailableUser(params) {
+async function getFirstAvailableUser(urls) {
     try {
-        const fetchUrls = params.map((item) => fetch(urls));
+        const fetchUrls = urls.map(async (item)=>{
+            const resp = await fetch(item);
 
-        const receiver = await Promise.any(fetchUrls);
+            if(!resp.ok){
+                throw new Error("The api failed to fetch");
+            }
+
+            return resp
+        });
+        const resp = await Promise.any(fetchUrls);
+
+        console.log(await resp.json());
         
-        if(receiver.status == 404 || receiver.status == 500){
-            throw new Error("The api are not working failed.")
-        }
-        
-     
-    } catch (error) {
-        if(error.name = 'AggregateError'){
-            console.error("All servers failed")
+    } catch (err) {
+        if(err.name == 'AggregateError'){
+            console.error(`${err} All servers failed`)
+        }else{
+            console.error(err)
         }
     }   
 }
